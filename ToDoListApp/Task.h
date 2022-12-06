@@ -1,23 +1,24 @@
 #pragma once
 #include <stdio.h>
 #include <stdbool.h>
-#define MAXNAME 25		// I think 25 is fine.
+#define MAXNAME 25
 #define MAXDES 200
-#define TEMPLATE 30		// can be changed later
-
 
 enum Priority {Low, Mid, High};
 
 typedef struct task {
-	char* taskName[MAXNAME];
+	char* taskName;
 	enum Priority taskPriority;
-	char* taskDescription[MAXDES];
-	bool checking;						// if the user checks the task, checking = true, other wise = false
+	char* taskDescription;
 } TASK, *PTASK;
 
 
-void TodoHead(void);
+TASK CreateTask(char*, enum Priority, char*);
+TASK CopyTask(TASK);
 
-TASK CreateTask();
-
+void PrintTask(TASK);
 bool UpdateTask(PTASK*, char*, enum Priority, char* );
+
+
+void DisposeTask(TASK);
+bool CompareStudent(TASK, TASK);

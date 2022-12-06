@@ -25,7 +25,7 @@
 
 int main(void)
 {
-	TodoHead();
+
 	return 0;
 }
 

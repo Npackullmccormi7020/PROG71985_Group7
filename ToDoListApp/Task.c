@@ -1,27 +1,38 @@
 ﻿#include "Task.h"
+#include <String.h>
 
-void TodoHead(void)
+TASK CreateTask(char* name, enum Priority priority, char* description)
 {
-	puts("==================================================");		// 50 of '='
-	printf("%*s", TEMPLATE, "To Do List\n");
-	puts("==================================================");
+	TASK t;
+	strncpy(t.taskName, name, MAXNAME);
+	t.taskPriority = priority;
+	strncpy(t.taskDescription, description, MAXDES);
+	return t;
 }
 
-void Todolist(PTASK t)
+
+TASK CopyTask(TASK srcTask)
 {
-	for (int i = 0; i < /*Number of tasks*/; i++)
-	{
-		printf("________________________________________________  ");
-		printf("%5d. %-*s -%-s", i + 1, MAXNAME, t->taskName, t->checking ? "Finished" : "Unfinished");
-	}
+	return CreateTask(srcTask.taskName, srcTask.taskPriority, srcTask.taskDescription);
 }
 
-TASK CreateTask()
+void PrintTask(TASK t)
 {
-
+	//printf("Task: %s, Priority: %d Description: %s\n", t.taskName, t.taskPriority, t.taskDescription);
 }
 
 bool UpdateTask(PTASK* source, char* newName, enum Priority newPriority, char* newDes)
 {
 
+}
+
+
+void DisposeStudent(TASK t)
+{
+	//nothing
+}
+
+bool CompareStudent(TASK t1, TASK t2)
+{
+	return(t1.taskName == t2.taskName);
 }

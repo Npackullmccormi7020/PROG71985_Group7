@@ -21,9 +21,21 @@
     <ClCompile Include="Task.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ListADT.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ListNode.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Task.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListADT.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ListNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
