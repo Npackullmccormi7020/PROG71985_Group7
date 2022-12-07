@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ClearBuffer.c" />
     <ClCompile Include="ListADT.c" />
     <ClCompile Include="ListNode.c" />
     <ClCompile Include="Menu.c" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Task.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ClearBuffer.h" />
     <ClInclude Include="ListADT.h" />
     <ClInclude Include="ListNode.h" />
     <ClInclude Include="Menu.h" />

@@ -2,6 +2,7 @@
 #include"ListNode.h"
 #include"ListADT.h"
 #include"Menu.h"
+#include "ClearBuffer.h"
 #include<stdio.h>
 
 //	PROG71985F22 - Final Group Project: ToDoList Application
@@ -29,62 +30,81 @@
 
 int main(void)
 {
-	PrintMainMenu();
 	int input;
-	if (scanf_s(" %d", &input) != 1)
+	do
 	{
-		printf("Wrong input");
-	}
-	else
-	{
-		switch (input)
+		PrintMainMenu();
+		if (scanf_s(" %d", &input) != 1)
 		{
-		case 1:
+			printf("Wrong input");
+			ClearBuffer();		// To prevent errors that occur when a user entered a char, simbol, or space (etc.)
+		}
+		else
 		{
-			char* nameInput;
-			printf("Please Enter a Task Name\n");
-			if (scanf_s(" %s", nameInput, MAXNAME) != 1)
+			switch (input) {
+
+			case 1:
 			{
-				printf("Wrong input");
+				char* nameInput = "";		// before I put = "", it gives me an error that said it is uninitialized.
+				char* description = "";
+
+				printf("Please Enter a Task Name\n");
+				if (scanf_s("%s", nameInput, MAXNAME) != 1)
+				{
+					printf("Wrong input");
+					ClearBuffer();
+					break;
+				}
+				else {
+					if (scanf_s("%[^\n]s", description, MAXDES) != 1)		// %[^\n]s mean it will take input until newline doesn’t get encountered. 
+					{														// which means it will get a line of input with space
+						printf("Wrong input");
+						ClearBuffer();
+						break;
+					}
+					else {	// we might have to make a loop to ask again when the user entered invalid input
+						CreateTask()
+					}
+				}
 				break;
 			}
-			break;
-		}
-		case 2:
-		{
-			break;
-		}
-		case 3:
-		{
-			break;
-		}
-		case 4:
-		{
-			break;
-		}
-		case 5:
-		{
-			break;
-		}
-		case 6:
-		{
-			break;
-		}
-		case 7:
-		{
-			break;
-		}
-		case 8:
-		{
-			break;
-		}
-		default:
-		{
-			break;
-		}
-		}
-	}
-
+			case 2:
+			{
+				break;
+			}
+			case 3:
+			{
+				break;
+			}
+			case 4:
+			{
+				break;
+			}
+			case 5:
+			{
+				break;
+			}
+			case 6:
+			{
+				break;
+			}
+			case 7:
+			{
+				break;
+			}
+			case 8:
+			{
+				puts("Shutting down the program.");
+				break;
+			}
+			default:
+			{
+				break;
+			}
+			}
+		}						
+	} while (input != 8);		// I just used a magic num 8 for now, but it can be changed
+	
 	return 0;
 }
 

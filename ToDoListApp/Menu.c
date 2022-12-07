@@ -1,5 +1,6 @@
 #include "Menu.h"
 #include <stdio.h>
+
 void PrintMainMenu()
 {
 	printf("1.	Add a new task\n");
