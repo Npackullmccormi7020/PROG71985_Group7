@@ -4,6 +4,7 @@
 #include"Menu.h"
 #include "ClearBuffer.h"
 #include<stdio.h>
+#include<stdlib.h>
 
 //	PROG71985F22 - Final Group Project: ToDoList Application
 //	Group7 - Nicholas Packull-McCormick, YoungSu Chae, Alex Fridman
@@ -63,7 +64,8 @@ int main(void)
 						break;
 					}
 					else {	// we might have to make a loop to ask again when the user entered invalid input
-						CreateTask()
+						/*CreateTask();*/
+						exit(EXIT_SUCCESS);
 					}
 				}
 				break;

@@ -27,12 +27,12 @@ bool UpdateTask(PTASK* source, char* newName, enum Priority newPriority, char* n
 }
 
 
-void DisposeStudent(TASK t)
+void DisposeTask(TASK t)
 {
 	//nothing
 }
 
-bool CompareStudent(TASK t1, TASK t2)
+bool CompareTasks(TASK t1, TASK t2)
 {
 	return(t1.taskName == t2.taskName);
 }

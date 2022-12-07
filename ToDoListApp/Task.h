@@ -22,4 +22,4 @@ bool UpdateTask(PTASK*, char*, enum Priority, char* );
 
 
 void DisposeTask(TASK);
-bool CompareStudent(TASK, TASK);
+bool CompareTasks(TASK, TASK);
