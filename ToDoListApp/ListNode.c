@@ -23,6 +23,7 @@ PLISTNODE GetNodeNextNode(PLISTNODE listNode)
 	return listNode->next;
 }
 
+
 void SetNodeNextNode(PLISTNODE sourceListNode, PLISTNODE newNextNode)
 {
 	sourceListNode->next = newNextNode;

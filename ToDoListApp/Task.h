@@ -14,12 +14,12 @@ typedef struct task {
 } TASK, *PTASK;
 
 
-TASK CreateTask(char*, enum Priority, char*);
+TASK CreateTask(char* name, enum Priority priority, char* description);
 TASK CopyTask(TASK);
 
 void PrintTask(TASK);
-bool UpdateTask(PTASK*, char*, enum Priority, char* );
+char* UpdateTask(PTASK source, char* newName, enum Priority newPriority, char* newDes);
 
 
-void DisposeTask(TASK);
+void DisposeTask(TASK ptr);
 bool CompareTasks(TASK, TASK);

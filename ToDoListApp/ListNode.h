@@ -6,7 +6,7 @@ typedef struct listnode
 {
 	TASK nodeData;
 	struct listnode* next;
-}LISTNODE, * PLISTNODE;
+}LISTNODE, *PLISTNODE;
 
 PLISTNODE CreateNode(TASK);
 
