@@ -2,7 +2,11 @@
 #include "ListNode.h"
 #include <stdio.h>
 #include <stdlib.h>
+// 	PROG71985F22 - Final Group Project: ToDoList Application
+//	Group7 - Nicholas Packull-McCormick, YoungSu Chae, Alex Fridman
+//	Due date: Dec 9, 2022
 
+// C File for ListNode functions
 
 PLISTNODE CreateNode(TASK task)
 {

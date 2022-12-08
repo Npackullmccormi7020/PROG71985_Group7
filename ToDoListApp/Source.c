@@ -31,14 +31,17 @@
 
 int main(void)
 {
-	int input;
-	do
+	bool RunProgram = true;
+	LIST ToDoList = CreateList();
+
+	while(RunProgram)
 	{
+		int input;
 		PrintMainMenu();
 		if (scanf_s(" %d", &input) != 1)
 		{
 			printf("Wrong input");
-			ClearBuffer();		// To prevent errors that occur when a user entered a char, simbol, or space (etc.)
+			//ClearBuffer();		// To prevent errors that occur when a user entered a char, simbol, or space (etc.)
 		}
 		else
 		{
@@ -46,66 +49,107 @@ int main(void)
 
 			case 1:
 			{
-				char* nameInput = "";		// before I put = "", it gives me an error that said it is uninitialized.
-				char* description = "";
+				//ClearBuffer();
+				char nameInput[MAXNAME];
+				enum Priority pri = Low;
+				char description[MAXDES];
 
 				printf("Please Enter a Task Name\n");
-				if (scanf_s("%s", nameInput, MAXNAME) != 1)
+				if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
 				{
 					printf("Wrong input");
-					ClearBuffer();
+					//ClearBuffer();
 					break;
 				}
-				else {
-					if (scanf_s("%[^\n]s", description, MAXDES) != 1)		// %[^\n]s mean it will take input until newline doesn’t get encountered. 
-					{														// which means it will get a line of input with space
-						printf("Wrong input");
-						ClearBuffer();
-						break;
-					}
-					else {	// we might have to make a loop to ask again when the user entered invalid input
-						/*CreateTask();*/
-						exit(EXIT_SUCCESS);
-					}
+
+
+				printf("Please Enter a task Priority\n 0) Low\n 1) Mid\n 2) High\n");
+				if (scanf_s(" %d", &pri) != 1)
+				{
+					printf("Wrong input");
+					//ClearBuffer();
+					break;
+				}
+
+				printf("Please Enter a Task Description\n");
+				if (scanf_s(" %[^\n]s", &description, MAXDES) != 1)		// %[^\n]s mean it will take input until newline doesn’t get encountered. 
+				{														// which means it will get a line of input with space
+					printf("Wrong input");
+					//ClearBuffer();
+					break;
+				}
+				
+				if (AddTaskToList(&ToDoList, CreateTask(*nameInput, pri, *description)))
+				{
+					printf("Task Added Sucessfully\n");
 				}
 				break;
 			}
 			case 2:
 			{
+				char nameInput[MAXNAME];
+				printf("Please Enter the Name of the desired Task to Delete\n");
+				if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
+				{
+					printf("Wrong input");
+					//ClearBuffer();
+					break;
+				}
+
+				// Find task by name
+
+				// RemoveTaskFromList(&ToDoList, Task);
+				
+				
 				break;
 			}
 			case 3:
 			{
+				//3.	update an existing task
+				// Find task by name
+				// Enter New Info
+				// UpdateTask();
 				break;
 			}
 			case 4:
 			{
+				//4.	display single task
+				// DisplayTask();
 				break;
 			}
 			case 5:
 			{
+				//5.	display range task
+				// DisplayListByPriority(ToDoList, Priority);
 				break;
 			}
 			case 6:
 			{
+				//6.	display all task
+
+				Display(ToDoList);
 				break;
 			}
 			case 7:
 			{
+				//7.	search for task
+				// Find task by name
+				// Print Task
 				break;
 			}
 			case 8:
 			{
 				puts("Shutting down the program.");
+				RunProgram = false;
 				break;
 			}
 			default:
 			{
 				break;
 			}
-			}
-		}						
-	} while (input != 8);		// I just used a magic num 8 for now, but it can be changed
+			}// End of Switch
+		}// End of Main Menu Loop						
+	} // End of While Function
 	
 	return 0;
 }

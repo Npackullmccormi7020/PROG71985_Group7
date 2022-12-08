@@ -1,7 +1,13 @@
 #include "ListADT.h"
 #include "Task.h"
 #include <stdlib.h>
+#include <string.h>
 
+// 	PROG71985F22 - Final Group Project: ToDoList Application
+//	Group7 - Nicholas Packull-McCormick, YoungSu Chae, Alex Fridman
+//	Due date: Dec 9, 2022
+
+// C File for ListADT functions
 
 LIST CreateList()
 {
@@ -80,6 +86,7 @@ void Display(LIST thisList)
 		} while (current != NULL);
 	}
 }
+
 
 void DisposeList(PLIST thisList)
 {
