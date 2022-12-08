@@ -79,10 +79,10 @@ int main(void)
 					break;
 				}
 				
-				if (AddTaskToList(&ToDoList, CreateTask(*nameInput, pri, *description)))
+				/*if (AddTaskToList(&ToDoList, CreateTask(nameInput, pri, description)))
 				{
 					printf("Task Added Sucessfully\n");
-				}
+				}*/
 				break;
 			}
 			case 2:
