@@ -7,7 +7,7 @@
 //	Group7 - Nicholas Packull-McCormick, YoungSu Chae, Alex Fridman
 //	Due date: Dec 9, 2022
 
-// C File for ListADT functions
+// C File for ListADT functions 
 
 LIST CreateList()
 {
@@ -87,6 +87,42 @@ void Display(LIST thisList)
 	}
 }
 
+void DisplayRange(LIST thisList, PRIORITY pri)
+{
+	if (thisList.list == NULL)
+		return;
+	else
+	{
+		PLISTNODE current = thisList.list;
+		do
+		{
+			if (current->nodeData.taskPriority == pri)
+			{
+				PrintTask(current->nodeData);
+			}
+			current = GetNodeNextNode(current);
+		} while (current != NULL);
+	}
+}
+
+PTASK FindTask(LIST thisList, char* name)
+{
+	if (thisList.list == NULL)
+		return NULL;
+	else
+	{
+		PLISTNODE current = thisList.list;
+		do
+		{
+			if (strcmp(current->nodeData.taskName, name) == 0)
+			{
+				return &current->nodeData;
+			}
+			current = GetNodeNextNode(current);
+		} while (current != NULL);
+	}
+}
+
 
 void DisposeList(PLIST thisList)
 {
@@ -98,5 +134,20 @@ void DisposeList(PLIST thisList)
 		tmp = current;
 		current = GetNodeNextNode(current);
 		DisposeNode(tmp);
+	}
+}
+
+void WriteListToFile(LIST thisList, FILE* fp)
+{
+	if (thisList.list == NULL)
+		return;
+	else
+	{
+		PLISTNODE current = thisList.list;
+		do
+		{
+			fputs("%s|%d|%s\n", current->nodeData.taskName, current->nodeData.taskPriority, current->nodeData.taskDescription, fp);
+			current = GetNodeNextNode(current);
+		} while (current != NULL);
 	}
 }

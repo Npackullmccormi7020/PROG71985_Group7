@@ -10,11 +10,11 @@
 
 // C File for Task functions
 
-TASK CreateTask(char* name, enum Priority priority, char* description)
+TASK CreateTask(char* name, PRIORITY priority, char* description)
 {
 	TASK t;
-	strncpy(t.taskName, name, MAXNAME);
 	t.taskPriority = priority;
+	strncpy(t.taskName, name, MAXNAME);
 	strncpy(t.taskDescription, description, MAXDES);
 	return t;
 }
@@ -27,28 +27,29 @@ TASK CopyTask(TASK srcTask)
 
 void PrintTask(TASK t)
 {
-	//printf("Task: %s, Priority: %d Description: %s\n", t.taskName, t.taskPriority, t.taskDescription);
+	printf("Task Name: %s\n", t.taskName);
+	printf("Task Priority: %d\n", t.taskPriority);
+	printf("Task Description: %s\n", t.taskDescription);
+	printf("----------------------------------------------------\n");
 }
 
-char* UpdateTask(PTASK source, char* newName, enum Priority newPriority, char* newDes) //copies input replaces it new destination 
+void UpdateTask(PTASK source, char* newName, PRIORITY newPriority, char* newDes)
 {
-	char** ptr; // pointer to a pointer
-	ptr = &source->taskName;
-	if (ptr == NULL) // if empty do not run
-		exit(1);
-	else
-		free(ptr); // frees space for updated task
-	    strcpy(newDes, newName); // copies string to pointer
-		return newDes;
+	source->taskPriority = newPriority;
+	strncpy(source->taskName, newName, MAXNAME);
+	strncpy(source->taskDescription, newDes, MAXDES);
 }
 
-
-void DisposeTask(TASK ptr)
+void DisposeTask(TASK t)
 {
-
+	// Do Nothing, it's on the stack
 }
 
 bool CompareTasks(TASK t1, TASK t2)
 {
-	return(t1.taskName == t2.taskName);
+	if (strcmp(t1.taskName, t2.taskName) == 0)
+	{
+		return true;
+	}
+	return false;
 }

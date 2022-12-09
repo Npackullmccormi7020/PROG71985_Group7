@@ -2,7 +2,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdbool.h>
-#define MAXNAME 25
+#define MAXNAME 50
 #define MAXDES 200
 
 // 	PROG71985F22 - Final Group Project: ToDoList Application
@@ -11,20 +11,20 @@
 
 // Header File for Task functions
 
-enum Priority {Low, Mid, High};
+typedef enum Priority {Low, Mid, High} PRIORITY;
 
 typedef struct task {
-	char* taskName;
-	enum Priority taskPriority;
-	char* taskDescription;
+	char taskName[MAXNAME];
+	PRIORITY taskPriority;
+	char taskDescription[MAXDES];
 } TASK, *PTASK;
 
 
-TASK CreateTask(char* name, enum Priority priority, char* description);
+TASK CreateTask(char* name, PRIORITY priority, char* description);
 TASK CopyTask(TASK);
 
 void PrintTask(TASK);
-char* UpdateTask(PTASK source, char* newName, enum Priority newPriority, char* newDes);
+void UpdateTask(PTASK source, char* newName, PRIORITY newPriority, char* newDes);
 
-void DisposeTask(TASK ptr);
+void DisposeTask(TASK);
 bool CompareTasks(TASK, TASK);

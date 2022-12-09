@@ -18,7 +18,9 @@ LIST CreateList();
 bool AddTaskToList(PLIST, TASK);
 void RemoveTaskFromList(PLIST, TASK);
 
+PTASK FindTask(LIST, char*);
 void Display(LIST);
-
-
+void DisplayRange(LIST, PRIORITY);
 void DisposeList(PLIST);
+
+void WriteListToFile(LIST, FILE*);
