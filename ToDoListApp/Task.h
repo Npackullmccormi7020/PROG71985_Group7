@@ -1,7 +1,5 @@
 #pragma once
 #define _CRT_SECURE_NO_WARNINGS
-#include "ListADT.h"
-#include "ListNode.h"
 #include <stdio.h>
 #include <stdbool.h>
 #define MAXNAME 25
