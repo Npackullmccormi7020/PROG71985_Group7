@@ -26,7 +26,7 @@
 //			11. you may add additional features, increasing your group’s overall mark to a maximum of 100 % .
 //
 // Revision History:
-// 2022-11-09: Created
+// 2022-11-09: Created 
 
 int main(void)
 {
