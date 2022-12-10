@@ -2,11 +2,11 @@
 #include"ListNode.h"
 #include"ListADT.h"
 #include"Menu.h"
-#include "ClearBuffer.h"
+#include"ClearBuffer.h"
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-#define FILELINE 600
+
 //	PROG71985F22 - Final Group Project: ToDoList Application
 //	Group7 - Nicholas Packull-McCormick, YoungSu Chae, Alex Fridman
 //	Due date: Dec 9, 2022
@@ -28,17 +28,16 @@
 // Revision History:
 // 2022-11-09: Created
 
-
 int main(void)
 {
 	bool RunProgram = true;
 	LIST ToDoList = CreateList();
 
+	// Run main program loop
 	while(RunProgram)
 	{
 		int input;
 		PrintMainMenu();
-		ClearBuffer();
 		if (scanf_s(" %d", &input) != 1)
 		{
 			printf("Wrong input");
@@ -57,7 +56,6 @@ int main(void)
 
 				// Get user input for name
 				printf("Please Enter a Task Name\n");
-				ClearBuffer();
 				if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
 				{
 					printf("Wrong input");
@@ -66,7 +64,6 @@ int main(void)
 
 				// Get user input for Priority
 				printf("Please Enter a Task Priority\n 0) Low\n 1) Mid\n 2) High\n");
-				ClearBuffer();
 				if (scanf_s(" %d", &pri) != 1)
 				{
 					printf("Wrong input");
@@ -75,7 +72,6 @@ int main(void)
 
 				// Get user input for Description
 				printf("Please Enter a Task Description\n");
-				ClearBuffer();
 				if (scanf_s(" %[^\n]s", &description, MAXDES) != 1)
 				{
 					printf("Wrong input");
@@ -97,7 +93,6 @@ int main(void)
 
 				// Get user input for name 
 				printf("Please Enter the Name of the desired Task to Delete\n");
-				ClearBuffer();
 				if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
 				{
 					printf("Wrong input");
@@ -105,7 +100,7 @@ int main(void)
 				}
 
 				// Find task by name
-				PTASK temp = FindTask(ToDoList, &nameInput);
+				PTASK temp = FindTask(ToDoList, nameInput);
 				if (temp->taskName == NULL)
 				{
 					// If the task is not found, do nothing
@@ -128,7 +123,6 @@ int main(void)
 
 				// Get user input for name 
 				printf("Please Enter the Name of the desired Task to Delete\n");
-				ClearBuffer();
 				if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
 				{
 					printf("Wrong input");
@@ -136,7 +130,7 @@ int main(void)
 				}
 
 				// Find task by name
-				PTASK temp = FindTask(ToDoList, &nameInput);
+				PTASK temp = FindTask(ToDoList, nameInput);
 				if (temp->taskName == NULL)
 				{
 					// If the task is not found, do nothing
@@ -151,7 +145,6 @@ int main(void)
 
 					// Get user input for name 
 					printf("Please Enter a New Task Name\n");
-					ClearBuffer();
 					if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
 					{
 						printf("Wrong input");
@@ -160,7 +153,6 @@ int main(void)
 
 					// Get user input for priority
 					printf("Please Enter a New Task Priority\n 0) Low\n 1) Mid\n 2) High\n");
-					ClearBuffer();
 					if (scanf_s(" %d", &pri) != 1)
 					{
 						printf("Wrong input");
@@ -169,7 +161,6 @@ int main(void)
 
 					// Get user input for description
 					printf("Please Enter a New Task Description\n");
-					ClearBuffer();
 					if (scanf_s(" %[^\n]s", &description, MAXDES) != 1)
 					{
 						printf("Wrong input");
@@ -188,7 +179,6 @@ int main(void)
 
 				// Get user input for name 
 				printf("Please Enter the Name of the desired Task to Search\n");
-				ClearBuffer();
 				if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
 				{
 					printf("Wrong input");
@@ -196,7 +186,7 @@ int main(void)
 				}
 
 				// Find task by name
-				PTASK temp = FindTask(ToDoList, &nameInput);
+				PTASK temp = FindTask(ToDoList, nameInput);
 				if (temp->taskName == NULL)
 				{
 					// If the task is not found, do nothing
@@ -218,7 +208,6 @@ int main(void)
 
 				// Get user input for priority
 				printf("Please Enter a task Priority\n 0) Low\n 1) Mid\n 2) High\n");
-				ClearBuffer();
 				if (scanf_s(" %d", &pri) != 1)
 				{
 					printf("Wrong input");
@@ -244,7 +233,6 @@ int main(void)
 
 				// Get user input for name 
 				printf("Please Enter the Name of the desired Task to Search\n");
-				ClearBuffer();
 				if (scanf_s(" %[^\n]s", nameInput, MAXNAME) != 1)
 				{
 					printf("Wrong input");
@@ -252,7 +240,7 @@ int main(void)
 				}
 
 				// Find task by name
-				PTASK temp = FindTask(ToDoList, &nameInput);
+				PTASK temp = FindTask(ToDoList, nameInput);
 				if (temp->taskName == NULL)
 				{
 					// If the task is not found, do nothing
@@ -271,7 +259,7 @@ int main(void)
 			{
 				// Quit
 				puts("Shutting down the program.");
-
+				DisposeList(&ToDoList);
 				RunProgram = false;
 				break;
 			}

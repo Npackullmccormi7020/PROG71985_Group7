@@ -105,10 +105,12 @@ void DisplayRange(LIST thisList, PRIORITY pri)
 	}
 }
 
-PTASK FindTask(LIST thisList, char* name)
+PTASK FindTask(LIST thisList, char name[MAXNAME])
 {
 	if (thisList.list == NULL)
+	{
 		return NULL;
+	}	
 	else
 	{
 		PLISTNODE current = thisList.list;
@@ -121,6 +123,7 @@ PTASK FindTask(LIST thisList, char* name)
 			current = GetNodeNextNode(current);
 		} while (current != NULL);
 	}
+	return NULL;
 }
 
 
@@ -134,20 +137,5 @@ void DisposeList(PLIST thisList)
 		tmp = current;
 		current = GetNodeNextNode(current);
 		DisposeNode(tmp);
-	}
-}
-
-void WriteListToFile(LIST thisList, FILE* fp)
-{
-	if (thisList.list == NULL)
-		return;
-	else
-	{
-		PLISTNODE current = thisList.list;
-		do
-		{
-			fputs("%s|%d|%s\n", current->nodeData.taskName, current->nodeData.taskPriority, current->nodeData.taskDescription, fp);
-			current = GetNodeNextNode(current);
-		} while (current != NULL);
 	}
 }

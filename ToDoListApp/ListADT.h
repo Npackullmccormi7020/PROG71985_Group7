@@ -7,7 +7,7 @@
 //	Group7 - Nicholas Packull-McCormick, YoungSu Chae, Alex Fridman
 //	Due date: Dec 9, 2022
 
-// Header File for ListADT functions
+// Header File for ListADT functions, adapted from 
 
 typedef struct ListADT
 {
@@ -18,9 +18,8 @@ LIST CreateList();
 bool AddTaskToList(PLIST, TASK);
 void RemoveTaskFromList(PLIST, TASK);
 
-PTASK FindTask(LIST, char*);
 void Display(LIST);
 void DisplayRange(LIST, PRIORITY);
-void DisposeList(PLIST);
+PTASK FindTask(LIST, char[]);
 
-void WriteListToFile(LIST, FILE*);
+void DisposeList(PLIST);
